@@ -1,0 +1,66 @@
+package bj;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class Main {
+
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		StringTokenizer st;
+
+		//테스트 케이스 개수
+		int C = Integer.parseInt(br.readLine());
+		
+		int[] arr;
+		
+		//테스트케이스 수 만큼 반복
+		for(int j =0;j<C;j++) {
+			
+			// 학생 수와 성적은 한줄에 있고 각각 공백으로 구분
+			st = new StringTokenizer(br.readLine()," ");
+			
+			//다음 줄 읽을 때 : readLine()
+			//문자열단위로 읽을 때 : nextToken()
+			
+			int N = Integer.parseInt(st.nextToken());
+			//학생수
+			//첫번째 토큰은 학생 수
+			
+			arr= new int[N];
+			//학생 수 만큼 배열 생성
+			
+			double sum =0;
+			for(int i=0;i<N;i++) {
+				int score = Integer.parseInt(st.nextToken());
+				//두번째 토큰부터 토큰을 score변수에 저장
+				arr[i] = score;
+				//score를 배열에 저장
+				
+				sum+=score;//성적 총 합 구하기
+				
+			}// 학생 수 만큼 점수 저장하기
+			
+			double avg = sum/N;
+			//평균구하기
+			
+			double count =0;
+			
+			for(int i =0;i<N;i++) {
+				if(arr[i] > avg) {
+					//각 성적이 평균을 넘으면
+					count++;
+					//카운트하기
+				}
+			}
+			
+			System.out.printf("%.3f%%\n",(count/N)*100);
+			
+		}
+		
+	}
+
+}
